@@ -1,0 +1,422 @@
+{
+    "acacia_log.png": {
+        "r": 103,
+        "g": 96,
+        "b": 86
+    },
+    "acacia_planks.png": {
+        "r": 168,
+        "g": 90,
+        "b": 50
+    },
+    "amethyst_block.png": {
+        "r": 133,
+        "g": 97,
+        "b": 191
+    },
+    "andesite.png": {
+        "r": 136,
+        "g": 136,
+        "b": 136
+    },
+    "bamboo_block.png": {
+        "r": 127,
+        "g": 144,
+        "b": 57
+    },
+    "bamboo_planks.png": {
+        "r": 193,
+        "g": 173,
+        "b": 80
+    },
+    "birch_log.png": {
+        "r": 216,
+        "g": 215,
+        "b": 210
+    },
+    "birch_planks.png": {
+        "r": 192,
+        "g": 175,
+        "b": 121
+    },
+    "blackstone.png": {
+        "r": 42,
+        "g": 35,
+        "b": 40
+    },
+    "black_concrete.png": {
+        "r": 8,
+        "g": 10,
+        "b": 15
+    },
+    "black_terracotta.png": {
+        "r": 37,
+        "g": 22,
+        "b": 16
+    },
+    "blue_concrete.png": {
+        "r": 44,
+        "g": 46,
+        "b": 143
+    },
+    "blue_terracotta.png": {
+        "r": 74,
+        "g": 59,
+        "b": 91
+    },
+    "bricks.png": {
+        "r": 150,
+        "g": 97,
+        "b": 83
+    },
+    "brown_concrete.png": {
+        "r": 96,
+        "g": 59,
+        "b": 31
+    },
+    "brown_terracotta.png": {
+        "r": 77,
+        "g": 51,
+        "b": 35
+    },
+    "calcite.png": {
+        "r": 223,
+        "g": 224,
+        "b": 220
+    },
+    "cherry_log.png": {
+        "r": 54,
+        "g": 33,
+        "b": 44
+    },
+    "cherry_planks.png": {
+        "r": 226,
+        "g": 178,
+        "b": 172
+    },
+    "cobbled_deepslate.png": {
+        "r": 77,
+        "g": 77,
+        "b": 80
+    },
+    "copper_block.png": {
+        "r": 192,
+        "g": 107,
+        "b": 79
+    },
+    "crimson_planks.png": {
+        "r": 101,
+        "g": 48,
+        "b": 70
+    },
+    "cyan_concrete.png": {
+        "r": 21,
+        "g": 119,
+        "b": 136
+    },
+    "cyan_terracotta.png": {
+        "r": 86,
+        "g": 91,
+        "b": 91
+    },
+    "dark_oak_log.png": {
+        "r": 60,
+        "g": 46,
+        "b": 26
+    },
+    "dark_oak_planks.png": {
+        "r": 66,
+        "g": 43,
+        "b": 20
+    },
+    "dark_prismarine.png": {
+        "r": 51,
+        "g": 91,
+        "b": 75
+    },
+    "diorite.png": {
+        "r": 188,
+        "g": 188,
+        "b": 188
+    },
+    "dirt.png": {
+        "r": 134,
+        "g": 96,
+        "b": 67
+    },
+    "end_stone.png": {
+        "r": 219,
+        "g": 222,
+        "b": 158
+    },
+    "exposed_copper.png": {
+        "r": 161,
+        "g": 125,
+        "b": 103
+    },
+    "granite.png": {
+        "r": 149,
+        "g": 103,
+        "b": 85
+    },
+    "gray_concrete.png": {
+        "r": 54,
+        "g": 57,
+        "b": 61
+    },
+    "gray_terracotta.png": {
+        "r": 57,
+        "g": 42,
+        "b": 35
+    },
+    "green_concrete.png": {
+        "r": 73,
+        "g": 91,
+        "b": 36
+    },
+    "green_terracotta.png": {
+        "r": 76,
+        "g": 83,
+        "b": 42
+    },
+    "honeycomb_block.png": {
+        "r": 229,
+        "g": 148,
+        "b": 29
+    },
+    "jungle_log.png": {
+        "r": 85,
+        "g": 67,
+        "b": 25
+    },
+    "jungle_planks.png": {
+        "r": 160,
+        "g": 115,
+        "b": 80
+    },
+    "light_blue_concrete.png": {
+        "r": 35,
+        "g": 137,
+        "b": 198
+    },
+    "light_blue_terracotta.png": {
+        "r": 113,
+        "g": 108,
+        "b": 137
+    },
+    "light_gray_concrete.png": {
+        "r": 125,
+        "g": 125,
+        "b": 115
+    },
+    "light_gray_terracotta.png": {
+        "r": 135,
+        "g": 106,
+        "b": 97
+    },
+    "lime_concrete.png": {
+        "r": 94,
+        "g": 168,
+        "b": 24
+    },
+    "lime_terracotta.png": {
+        "r": 103,
+        "g": 117,
+        "b": 52
+    },
+    "magenta_concrete.png": {
+        "r": 169,
+        "g": 48,
+        "b": 159
+    },
+    "magenta_terracotta.png": {
+        "r": 149,
+        "g": 88,
+        "b": 108
+    },
+    "mangrove_log.png": {
+        "r": 83,
+        "g": 66,
+        "b": 41
+    },
+    "mangrove_planks.png": {
+        "r": 117,
+        "g": 54,
+        "b": 48
+    },
+    "mossy_cobblestone.png": {
+        "r": 110,
+        "g": 118,
+        "b": 94
+    },
+    "mossy_stone_bricks.png": {
+        "r": 115,
+        "g": 121,
+        "b": 105
+    },
+    "mud_bricks.png": {
+        "r": 137,
+        "g": 103,
+        "b": 79
+    },
+    "nether_bricks.png": {
+        "r": 44,
+        "g": 21,
+        "b": 26
+    },
+    "oak_log.png": {
+        "r": 109,
+        "g": 85,
+        "b": 50
+    },
+    "oak_planks.png": {
+        "r": 162,
+        "g": 130,
+        "b": 78
+    },
+    "orange_concrete.png": {
+        "r": 224,
+        "g": 97,
+        "b": 0
+    },
+    "orange_terracotta.png": {
+        "r": 161,
+        "g": 83,
+        "b": 37
+    },
+    "oxidized_copper.png": {
+        "r": 82,
+        "g": 162,
+        "b": 132
+    },
+    "pale_oak_log.png": {
+        "r": 87,
+        "g": 77,
+        "b": 75
+    },
+    "pale_oak_planks.png": {
+        "r": 227,
+        "g": 217,
+        "b": 216
+    },
+    "pink_concrete.png": {
+        "r": 213,
+        "g": 101,
+        "b": 142
+    },
+    "pink_terracotta.png": {
+        "r": 161,
+        "g": 78,
+        "b": 78
+    },
+    "prismarine_bricks.png": {
+        "r": 99,
+        "g": 171,
+        "b": 158
+    },
+    "purple_concrete.png": {
+        "r": 100,
+        "g": 31,
+        "b": 156
+    },
+    "purple_terracotta.png": {
+        "r": 118,
+        "g": 70,
+        "b": 86
+    },
+    "quartz_block_bottom.png": {
+        "r": 236,
+        "g": 230,
+        "b": 223
+    },
+    "red_concrete.png": {
+        "r": 142,
+        "g": 32,
+        "b": 32
+    },
+    "red_terracotta.png": {
+        "r": 143,
+        "g": 61,
+        "b": 46
+    },
+    "sandstone.png": {
+        "r": 216,
+        "g": 203,
+        "b": 155
+    },
+    "sandstone_top.png": {
+        "r": 223,
+        "g": 214,
+        "b": 170
+    },
+    "smooth_stone.png": {
+        "r": 158,
+        "g": 158,
+        "b": 158
+    },
+    "spruce_log.png": {
+        "r": 58,
+        "g": 37,
+        "b": 16
+    },
+    "spruce_planks.png": {
+        "r": 114,
+        "g": 84,
+        "b": 48
+    },
+    "stone.png": {
+        "r": 125,
+        "g": 125,
+        "b": 125
+    },
+    "stone_bricks.png": {
+        "r": 122,
+        "g": 121,
+        "b": 122
+    },
+    "terracotta.png": {
+        "r": 152,
+        "g": 94,
+        "b": 67
+    },
+    "tuff.png": {
+        "r": 108,
+        "g": 109,
+        "b": 102
+    },
+    "tuff_bricks.png": {
+        "r": 98,
+        "g": 102,
+        "b": 95
+    },
+    "warped_planks.png": {
+        "r": 43,
+        "g": 104,
+        "b": 99
+    },
+    "weathered_copper.png": {
+        "r": 108,
+        "g": 153,
+        "b": 110
+    },
+    "white_concrete.png": {
+        "r": 207,
+        "g": 213,
+        "b": 214
+    },
+    "white_terracotta.png": {
+        "r": 209,
+        "g": 178,
+        "b": 161
+    },
+    "yellow_concrete.png": {
+        "r": 240,
+        "g": 175,
+        "b": 21
+    },
+    "yellow_terracotta.png": {
+        "r": 186,
+        "g": 133,
+        "b": 35
+    }
+}
