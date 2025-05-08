@@ -3,13 +3,12 @@ import json
 import math
 import time
 from PIL import Image
-from collections import Counter
 from sklearn.cluster import KMeans
 from torchvision import transforms
 import numpy as np
 
 
-def get_representative_colors(image_path, num_colors=6, scale_factor=128):
+def get_representative_colors(image_path, num_colors=6, extra_clusters=2, scale_factor=128):
     """Extract num_colors that most represent the image using K-Means clustering."""
     with Image.open(image_path) as img:
         img = img.convert("RGB")  # Ensure the image is in RGB mode
@@ -17,7 +16,7 @@ def get_representative_colors(image_path, num_colors=6, scale_factor=128):
         pixels = np.array(img.getdata())  # Convert image data to a NumPy array
 
         # Apply K-Means clustering
-        kmeans = KMeans(n_clusters=num_colors, random_state=42)
+        kmeans = KMeans(n_clusters=num_colors + extra_clusters, random_state=42)
         kmeans.fit(pixels)
         representative_colors = kmeans.cluster_centers_.astype(int)  # Get cluster centers as representative colors
 
@@ -27,19 +26,22 @@ def load_json_data(json_file):
     """Load RGB data from a JSON file."""
     with open(json_file, 'r') as f:
         return json.load(f)
-def is_blue_or_green(rgb, blue_threshold=1.02, green_threshold=1):
+
+def is_blue_or_green_or_black(rgb, blue_threshold=1.142, green_threshold=1.05):
     """Check if the color is predominantly blue or green with a relaxed threshold."""
     r, g, b = rgb["r"], rgb["g"], rgb["b"]
     is_blue = b > r * blue_threshold and b > g * blue_threshold
-    is_green = g > r * green_threshold and g > b * green_threshold
-    return is_blue or is_green
+    is_green = g > r * (green_threshold + 0.02) and g > b * green_threshold
+    is_black = r + g + b < 40 and max(r, g, b) < 15
+
+    return is_blue or is_green or is_black
 
 def find_closest_color(target_color, rgb_data, used_colors):
     """Find the closest color in the JSON data to the target color, avoiding duplicates and ignoring blue/green textures."""
     closest_color = None
     min_distance = float('inf')
     for block_name, rgb in rgb_data.items():
-        if block_name in used_colors or is_blue_or_green(rgb):
+        if block_name in used_colors or is_blue_or_green_or_black(rgb):
             continue  # Skip already used colors or blue/green textures
         distance = math.sqrt(
             (target_color[0] - rgb["r"]) ** 2 +
@@ -54,16 +56,24 @@ def find_closest_color(target_color, rgb_data, used_colors):
 
     return closest_color
 
-def process_images(directory, json_file, num_colors=6):
+def process_images(directory, json_file, num_colors=6, extra_clusters=2):
     """Process all images in the directory and find the closest matches for dominant colors."""
     rgb_data = load_json_data(json_file)
     results = {}
     for filename in os.listdir(directory):
         if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff')):
             image_path = os.path.join(directory, filename)
-            representative_colors = get_representative_colors(image_path, num_colors, scale_factor=128)
+            representative_colors = get_representative_colors(image_path, num_colors, extra_clusters=extra_clusters)
             used_colors = set()  # Track used colors for each image
-            closest_matches = [find_closest_color(color, rgb_data, used_colors) for color in representative_colors]
+            closest_matches = []
+
+            for color in representative_colors:
+                if len(closest_matches) >= num_colors:
+                    break  # Stop once we have enough valid matches
+                match = find_closest_color(color, rgb_data, used_colors)
+                if match:
+                    closest_matches.append(match)
+
             results[filename] = closest_matches
     return results
 
@@ -197,6 +207,8 @@ if __name__ == "__main__":
         print(f"Directory '{texture_dir}' does not exist.")
     elif not os.path.exists(augmented_dir):
         print(f"Directory '{augmented_dir}' does not exist.")
+    elif not os.path.exists(output_dir):
+        print(f"Directory '{output_dir}' does not exist.")
     else:
         print("Augmenting images...")
         #augment_images(training_dir, augmented_dir, num_augmentations=5)
