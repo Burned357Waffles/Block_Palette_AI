@@ -8,7 +8,7 @@ from torchvision import transforms
 import numpy as np
 
 
-def get_representative_colors(image_path, num_colors=6, extra_clusters=2, scale_factor=128):
+def get_representative_colors(image_path, num_colors=6, extra_clusters=2, scale_factor=256):
     """Extract num_colors that most represent the image using K-Means clustering."""
     with Image.open(image_path) as img:
         img = img.convert("RGB")  # Ensure the image is in RGB mode
@@ -73,7 +73,7 @@ def process_images(directory, json_file, num_colors=6, extra_clusters=2):
             closest_matches = []
 
             while len(closest_matches) < num_colors:
-                print(f"Finding closest matches for '{filename}'...")
+                #print(f"Finding closest matches for '{filename}'...")
                 for color in representative_colors:
                     if len(closest_matches) >= num_colors:
                         break  # Stop once we have enough valid matches
@@ -183,8 +183,8 @@ def augment_images(input_dir, output_dir, num_augmentations=5):
     augmentation_transforms = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=30),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05),
-        transforms.RandomResizedCrop(size=(128, 128), scale=(0.8, 1.0)),
+        transforms.ColorJitter(brightness=0.4, contrast=0.2, saturation=0.3, hue=0.075),
+        transforms.RandomResizedCrop(size=(256, 256), scale=(0.8, 1.0)),
     ])
 
     # Process each image in the input directory
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         print(f"Directory '{output_dir}' does not exist.")
     else:
         print("Augmenting images...")
-        #augment_images(training_dir, augmented_dir, num_augmentations=5)
+        augment_images(training_dir, augmented_dir, num_augmentations=5)
 
         #begin timer
         print("Processing images...")
