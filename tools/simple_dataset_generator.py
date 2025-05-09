@@ -27,22 +27,27 @@ def load_json_data(json_file):
     with open(json_file, 'r') as f:
         return json.load(f)
 
-def is_blue_or_green_or_black(rgb, blue_threshold=1.142, green_threshold=1.05):
+def is_blue_or_green_or_black(rgb, blue_threshold=1.142, green_threshold=1.04):
     """Check if the color is predominantly blue or green with a relaxed threshold."""
     r, g, b = rgb["r"], rgb["g"], rgb["b"]
-    is_blue = b > r * blue_threshold and b > g * blue_threshold
-    is_green = g > r * (green_threshold + 0.02) and g > b * green_threshold
+    is_blue = b > r * (blue_threshold + 0.3) and b > g * blue_threshold
+    is_green = g > r * green_threshold and g > b * (green_threshold + 0.25)
     is_black = r + g + b < 40 and max(r, g, b) < 15
 
     return is_blue or is_green or is_black
 
 def find_closest_color(target_color, rgb_data, used_colors):
     """Find the closest color in the JSON data to the target color, avoiding duplicates and ignoring blue/green textures."""
+    target_rgb = {"r": target_color[0], "g": target_color[1], "b": target_color[2]}
+    if is_blue_or_green_or_black(target_rgb):
+        #print(f"Skipping blue/green/black color: {target_color}")
+        return None  # Skip this target color
+
     closest_color = None
     min_distance = float('inf')
     for block_name, rgb in rgb_data.items():
-        if block_name in used_colors or is_blue_or_green_or_black(rgb):
-            continue  # Skip already used colors or blue/green textures
+        if block_name in used_colors:
+            continue  # Skip already used colors
         distance = math.sqrt(
             (target_color[0] - rgb["r"]) ** 2 +
             (target_color[1] - rgb["g"]) ** 2 +
@@ -67,12 +72,21 @@ def process_images(directory, json_file, num_colors=6, extra_clusters=2):
             used_colors = set()  # Track used colors for each image
             closest_matches = []
 
-            for color in representative_colors:
-                if len(closest_matches) >= num_colors:
-                    break  # Stop once we have enough valid matches
-                match = find_closest_color(color, rgb_data, used_colors)
-                if match:
-                    closest_matches.append(match)
+            while len(closest_matches) < num_colors:
+                print(f"Finding closest matches for '{filename}'...")
+                for color in representative_colors:
+                    if len(closest_matches) >= num_colors:
+                        break  # Stop once we have enough valid matches
+                    match = find_closest_color(color, rgb_data, used_colors)
+
+                    if match == "diorite.png" and "white_concrete.png" in closest_matches:
+                        #print(f"Skipping 'diorite.png' for '{filename}' as 'white_concrete.png' is already matched.")
+                        continue
+                    elif match == "white_concrete.png" and "diorite.png" in closest_matches:
+                        #print(f"Skipping 'white_concrete.png' for '{filename}' as 'diorite.png' is already matched.")
+                        continue
+                    if match:
+                        closest_matches.append(match)
 
             results[filename] = closest_matches
     return results
@@ -169,7 +183,7 @@ def augment_images(input_dir, output_dir, num_augmentations=5):
     augmentation_transforms = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=30),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05),
         transforms.RandomResizedCrop(size=(128, 128), scale=(0.8, 1.0)),
     ])
 
